@@ -521,10 +521,10 @@ public class MainActivity extends Activity {
       for (Size s : rawOutputSizes) {
         Log.i(TAG, s.toString());
       }
+      rawImageResolution = Collections.max(Arrays.asList(rawOutputSizes), new CompareSizesByArea());
     } else {
       Log.i(TAG, "Bayer RAW unavailable!");
     }
-    rawImageResolution = Collections.max(Arrays.asList(rawOutputSizes), new CompareSizesByArea());
 
     Size[] yuvOutputSizes = scm.getOutputSizes(ImageFormat.YUV_420_888);
     if (yuvOutputSizes != null) {
@@ -532,10 +532,10 @@ public class MainActivity extends Activity {
       for (Size s : yuvOutputSizes) {
         Log.i(TAG, s.toString());
       }
+      yuvImageResolution = Collections.max(Arrays.asList(yuvOutputSizes), new CompareSizesByArea());
     } else {
       Log.i(TAG, "YUV unavailable!");
     }
-    yuvImageResolution = Collections.max(Arrays.asList(yuvOutputSizes), new CompareSizesByArea());
     Log.i(TAG, "Chosen viewfinder resolution: " + viewfinderResolution);
     Log.i(TAG, "Chosen raw resolution: " + rawImageResolution);
     Log.i(TAG, "Chosen yuv resolution: " + yuvImageResolution);
